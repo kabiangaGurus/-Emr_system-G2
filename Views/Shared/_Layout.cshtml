@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Group2</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="">
+        <div style="width:100%;text-align:center;margin-top:8px"><img src="~/Icons/huduma_icon.png" alt="" style="width:auto;height:70px"> </div>
+
+        <div>
+            <div style="text-align:center;margin:8px">
+                <h4 style="color:#00396e"> HUDUMA(EMR)</h4>
+            </div>
+            <nav style="background-color:#00396e" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3 ">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                                    <ul class="navbar-nav flex-grow-1">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" asp-area="" asp-controller="Home" style="color:white" asp-action="Index">Home</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                        </li>
+                                        @if (User.IsInRole("RECEPTIONIST"))
+                                        {
+
+                                            <li class="nav-item">
+                                                <a  class="nav-link text-white thumbnail" asp-area="" asp-controller="" asp-action=""><span class="glyphicon glyphicon-user"></span> Refferals ( 0 )</a>
+                                            </li>}
+                                        else { }
+
+
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <li class="nav-item">
+                                                    <a data-toggle="modal" data-target="#exampleModal" class="nav-link text-white thumbnail" asp-area="" asp-controller="" asp-action=""><span class="glyphicon glyphicon-user"></span>Login</a>
+                                                </li>}
+                                        </ul>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                <a data-toggle="modal" data-target="#exampleModal" class="nav-link text-white thumbnail" asp-area="" asp-controller="" asp-action=""><span class="glyphicon glyphicon-user"></span>  @User.Identity.Name</a>
+
+                            </div>
+                          
+                          
+                        
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="card-header text-center" style="background-color:#80bbf2">
+                    <img src="~/Icons/avatar5.png" onerror="this.src='/images/placeholder.png'" asp-append-version="true" style="height:50px; border-style:solid;border-color:#409d1f;
+                 border-width:2px;  border-radius:100%; width:50px" class="img-responsive img-rounded img_bottom" />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div style="padding:16px;" class="text-center ">
+
+                            @User.Identity.Name
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-5"> <a style="border-style:solid;border-color:#00396e;border-width:1px" class=" btn  glyphicon glyphicon-user"> Profile</a></div>
+
+                                <div class="col-sm-5">
+                                    @*@Html.ActionLink("LOG OUT", "Logoff", "Home", null, new { @class = "text-right btn bg-orange " })*@
+                                    <a asp-action="Logoff" asp-controller="Home" class="btn btn-secondary">LOG OUT</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <a asp-action="Create" asp-controller="Doc_Res" style="color:#00396e">CREATE ACCOUNT</a>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-sm-5"><hr /></div>
+                            <div class="col-sm-2">Or</div>
+                            <div class="col-sm-5"><hr /></div>
+                        </div>
+                        <div>
+                            <a class="btn text-white btn btn-secondary " asp-action="Index" asp-controller="Home" >LOGIN</a>
+                        </div>
+                    }
+                    @*<a style="width:inherit" asp-action="Index" asp-controller="Home" class="btn btn-sm bg-orange text-white ">LOGIN</a>*@
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Group2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

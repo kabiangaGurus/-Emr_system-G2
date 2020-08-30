@@ -1,0 +1,86 @@
+﻿@model Group2.Models.Doc_Res
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="text-center">
+
+
+
+</div>
+<p></p>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <div class="container">
+            <div class="row">
+
+                <div class="img-thumbnail" style="padding:24px">
+                    <h4 class="text-center">Create Account</h4>
+                    <div style="height:3px;width:100%;background-color:#00396e"></div>
+                    <div class=" " style="margin-top:16px">
+                        <div class="img-thumbnail" style="background-color:whitesmoke;padding:8px">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="fULL_NAME" class="control-label"></label>
+                                            <input asp-for="fULL_NAME" class="form-control" />
+                                            <span asp-validation-for="fULL_NAME" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="uSERNAME" class="control-label"></label>
+                                            <input asp-for="uSERNAME" class="form-control" />
+                                            <span asp-validation-for="uSERNAME" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ROLE" class="control-label"></label>
+                                            <select asp-for="ROLE" class="form-control" asp-items="ViewBag.entity_type"></select>
+
+                                            <span asp-validation-for="ROLE" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="PHONE" class="control-label"></label>
+                                            <input asp-for="PHONE" class="form-control" />
+                                            <span asp-validation-for="PHONE" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="serviceNo" class="control-label"></label>
+                                            <input asp-for="serviceNo" class="form-control" />
+                                            <span asp-validation-for="serviceNo" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="PASSWORD" class="control-label"></label>
+                                            <input asp-for="PASSWORD" class="form-control" />
+                                            <span asp-validation-for="PASSWORD" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group text-right">
+                                    <input type="submit" value="Save" class="btn btn-secondary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+

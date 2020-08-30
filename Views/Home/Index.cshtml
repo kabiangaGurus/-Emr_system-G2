@@ -1,0 +1,81 @@
+﻿@model Group2.Models.Doc_Res
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="margin-top:20px;" >
+
+
+
+
+    <div class="row">
+        <div class=" col-lg-4 col-md-4 col-sm-4  "></div>
+
+        <div style="margin-top:24px;margin-left:16px;margin-right:16px; padding:16px;" class=" col-lg-4 col-md-4 col-sm-4 thumbnail ;box-shadow:0 4px 8px rgba(1,1,0.2,0.2)">
+            @using (Html.BeginForm("LoginUser", "Home", FormMethod.Post, new { role = "form" }))
+            {
+                <div style="margin-top:24px;" class="card">
+                    <div class="card-header" style="background-color:#80bbf2">
+
+                        <div class="text-center "><h1>login</h1> </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div>
+                            @Html.AntiForgeryToken()
+                            <div>
+
+                            </div>
+                            <div style="border-radius:8px;border-color:#00396e">
+                                @Html.TextBoxFor(m => m.serviceNo, new { @class = "form-control txtbox", @placeholder = "Service Number" })
+                            </div>
+                            <div style="padding-top:20px;"></div>
+                            <div>
+
+                            </div>
+                            <div style="border-radius:8px;border-color:#00396e">
+                                @Html.PasswordFor(m => m.PASSWORD, new { @class = "form-control txtbox", @placeholder = "Password" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="text-align:center;margin-bottom:16px">
+
+
+
+                        <div style="padding-top:20px;">
+                            <input id="Button1" type="submit" value="Login" style=" width:180px;text-align:center;  box-shadow:0 4px 8px rgba(1,1,0.2,0.2); background-color:#00396e;padding:8px;border-radius:18px;color:white" />
+
+
+                        </div>
+                    </div>
+
+                    <div style="margin:24px">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                    <label class="custom-control-label" for="defaultUnchecked">Remember Me</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <a asp-action="" asp-controller="">  Forgot Password</a>
+
+                            </div>
+                        </div>
+                        <p></p>
+                        @*<div>
+                            Don't Have An Account? <a asp-action="Create" asp-controller="Doc_Res"> Sign Up</a>
+                        </div>*@
+                    </div>
+
+
+
+                </div>
+            }
+        </div>
+
+        <div class=" col-lg-4 col-md-4 col-sm-4  "></div>
+    </div>
+
+</div>

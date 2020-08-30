@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "reffer";
+}
+
+
+<div class="text-center">
+
+
+
+</div>
+<p></p>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <div class="container">
+            <div class="row">
+
+                <div class="img-thumbnail" style="padding:24px">
+                    <h4 class="text-center">Reffer patient to another hospital </h4>
+                    <div style="height:3px;width:100%;background-color:#00396e"></div>
+                    <div class=" " style="margin-top:16px">
+                        <div class="img-thumbnail" style="background-color:whitesmoke;padding:8px;margin-left:8px">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+
+
+                                <div class="form-group">
+                                    Hospital<br />
+                                    <input placeholder="Enter institution code" class="form-control" />
+
+                                </div>
+                                <div class="form-group">
+                                    Detartment<br />
+                                    <input placeholder="Enter institution department" class="form-control" />
+
+                                </div>
+
+                                <div class="form-group">
+                                    Comment<br />
+                                    <textarea placeholder=" Your Comment" class="form-control" id="TextArea1" rows="2" cols="20"></textarea>
+
+
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-right">
+                                            <a asp-action="" asp-controller="" class="btn btn-outline-secondary">Cancel</a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-right">
+                                            <a asp-action="" asp-controller="" class="btn btn-secondary">Reffer</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+

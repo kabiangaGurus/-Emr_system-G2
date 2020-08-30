@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Group2.Models.Doc_Res>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="" style="margin-top:24px">
+    <div class="row">
+
+
+
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center"><h3>List of Staff</h3></div>
+        <div class="col-sm-4 text-right">
+          
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8" style="text-align:center">
+        <div class="card" style="text-align:center;padding-top:24px">
+
+
+            @using (Html.BeginForm("Index", "c_Post", FormMethod.Get))
+            {
+
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="input-group mb-3 col-sm-6" style="margin:8px">
+                        <input type="text" style="border-color:#00396e;border-top-left-radius:4px;border-bottom-left-radius:4px"
+                               class="form-control" placeholder="Search" id="searching" name="searching">
+                        <input type="submit" value="search" style="background-color:#00396e;border-top-right-radius:4px;
+    border-bottom-right-radius:4px;color:white" />
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+
+            }
+
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+                    <table class="table table-responsive text-center">
+                        <thead class="card-header table-responsive-lg">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fULL_NAME)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.uSERNAME)
+                                </th>
+                                <th>
+                                    Role
+                                </th>
+                                <th>
+                                    Phone
+                                </th>
+                                <th>
+                                   Service Number
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+
+
+                        @if (Model.Count() == 0)
+                        {
+
+                            <div class="well" style="color:red">
+                                No mach Found!!..
+                            </div>
+
+                        }
+                        else
+                        {
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fULL_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.uSERNAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ROLE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PHONE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.serviceNo)
+                                    </td>
+
+
+                                </tr>
+                                }
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
